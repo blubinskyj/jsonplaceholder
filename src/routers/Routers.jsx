@@ -12,9 +12,9 @@ export default function Routers() {
       <Routes>
         <Route path="/jsonplaceholder/" element={<HomeCover />}>
           <Route index element={<Users />} />
-          <Route path="jsonplaceholder/posts/:id" element={<Posts />} />
-          <Route path="jsonplaceholder/albums/:id" element={<Albums />} />
-          <Route path="jsonplaceholder/photos/:id" element={<Photos />} />
+          <Route path="posts/:id" element={<Posts />} />
+          <Route path="albums/:id" element={<Albums />} />
+          <Route path="photos/:id" element={<Photos />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
