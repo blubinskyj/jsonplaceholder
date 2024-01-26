@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const AlbumItem = ({ album }) => {
   return (
     <li className="album-card">
-      <Link to={`/photos/${album.id}`}>
+      <Link to={`jsonplaceholder/photos/${album.id}`}>
         <h2>Album #{album.id}</h2>
         <p>
           <strong>Title:</strong> {album.title}

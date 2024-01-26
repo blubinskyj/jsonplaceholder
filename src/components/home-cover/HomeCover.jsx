@@ -8,7 +8,7 @@ const HomeCover = () => {
       <h2 className={"title"}>Json placeholder</h2>
       <h5>by Bohdan Lubinskyj</h5>
       <nav className="navbar">
-        <Link to="/">
+        <Link to="/jsonplaceholder">
           <p>All users</p>
         </Link>
       </nav>

@@ -15,8 +15,8 @@ const UserCard = ({ user }) => {
         <strong>Email:</strong> {user.email}
       </p>
       <div className={"user-card-nav"}>
-        <Link to={`posts/${user.id}`}>Posts</Link>
-        <Link to={`albums/${user.id}`}>Albums</Link>
+        <Link to={`jsonplaceholder/posts/${user.id}`}>Posts</Link>
+        <Link to={`jsonplaceholder/albums/${user.id}`}>Albums</Link>
       </div>
     </li>
   );
