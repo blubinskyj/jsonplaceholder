@@ -12,7 +12,7 @@ const Posts = () => {
       .then((json) => setPosts(json));
   }, [id]);
 
-  return <PostList posts={posts}></PostList>;
+  return <PostList posts={posts}/>;
 };
 
 export default Posts;
