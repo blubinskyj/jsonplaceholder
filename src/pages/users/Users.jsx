@@ -1,11 +1,13 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import UserList from "./components/user-list/UserList";
 import Search from "../../components/search/Search";
 import Sort from "../../components/sort/Sort";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
+  const [sortedUsers, setSortedUser] = useState(users);
   const [inputValue, setInputValue] = useState("");
+  const [sort, setSort] = useState('');
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -13,24 +15,32 @@ const Users = () => {
       .then((json) => setUsers(json));
   }, []);
 
-  const handleInput = (e) => {
-    setInputValue(e.target.value);
-  };
 
+  useEffect(() => {
+    const filterAndSortUsers = () => {
+      let filteredUsers = [...users];
 
-  const filteredUsers = useMemo(
-    () =>
-      users.filter((user) => {
-        return user.username.toLowerCase().includes(inputValue.toLowerCase());
-      }),
-    [inputValue, users],
-  );
+      filteredUsers = filteredUsers.filter(user =>
+          user.username.toLowerCase().includes(inputValue.toLowerCase())
+      );
+
+      if (sort === 'asc') {
+        filteredUsers.sort((a, b) => (a.username > b.username ? 1 : -1));
+      } else {
+        filteredUsers.sort((a, b) => (a.username < b.username ? 1 : -1));
+      }
+
+      setSortedUser(filteredUsers);
+    };
+
+    filterAndSortUsers();
+  }, [inputValue, sort, users]);
 
   return (
     <>
-      <Search inputValue={inputValue} handleInput={handleInput} />
-      <Sort />
-      <UserList users={filteredUsers} />
+      <Search inputValue={inputValue} handleInput={(e)=> setInputValue(e.target.value)} />
+      <Sort sortAsc={()=> setSort('asc')} sortDesc={()=> setSort('desc')} />
+      <UserList users={sortedUsers} />
     </>
   );
 };
