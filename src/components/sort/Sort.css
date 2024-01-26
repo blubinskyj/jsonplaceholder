@@ -1,0 +1,13 @@
+.sort-container {
+    padding-top: 30px;
+    min-width: 400px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.sort-button {
+    border-radius: 8px;
+    border: 8px solid #ffffff;
+    background-color: #ffffff;
+}

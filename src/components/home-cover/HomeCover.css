@@ -1,0 +1,9 @@
+.title {
+    margin: 1rem auto;
+}
+
+.navbar{
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+}
